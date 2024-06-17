@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+        <h2>Your History</h2>
+        <div>
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks%}
+                <tr>
+                    <td>{{stock["type"]}}</td>
+                    <td>{{stock["name"]}}</td>
+                    <td>{{stock["symbol"]}}</td>
+                    <td>{{stock["quantity"]}}</td>
+                    <td>{{usd(stock["price"])}}</td>
+                    <td>{{stock["transaction_time"]}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        </div>
+{% endblock %}
